@@ -22,6 +22,13 @@ X = data[['Pipe Diameter_inches', 'Distance_miles']]
 y = data['Water_Loss_Percentage']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+# Create the Random Forest regression model
+model = RandomForestRegressor(n_estimators=100, random_state=42)
+
+# Train the model on the training data
+model.fit(X_train, y_train)
+
+
 # Function to make predictions
 def predict_water_loss(pipe_diameter, distance_miles):
     features = [[pipe_diameter, distance_miles]]
@@ -29,7 +36,7 @@ def predict_water_loss(pipe_diameter, distance_miles):
     return prediction[0]
 
 # Create a Streamlit app
-st.title("Water Loss Percentage Prediction App")
+st.title("NRW Prediction App")
 
 # User input
 pipe_diameter = st.slider("Pipe Diameter (inches)", min_value=1, max_value=20, value=10)
