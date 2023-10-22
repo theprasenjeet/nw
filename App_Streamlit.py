@@ -59,13 +59,13 @@ st.title("NRW Prediction App")
 pipe_diameter = st.slider("Pipe Diameter (inches)", min_value=1, max_value=20, value=10)
 distance_miles = st.slider("Distance (miles)", min_value=1, max_value=10, value=5)
 
-# Visualization: Scatter plot
-st.subheader("Scatter Plot of Pipe Diameter vs. Water Loss Percentage")
-plt.figure(figsize=(10, 6))
-sns.scatterplot(data=data, x="Pipe Diameter_inches", y="Water_Loss_Percentage")
-plt.xlabel("Pipe Diameter (inches)")
-plt.ylabel("Water Loss Percentage")
-st.pyplot(plt)
+# # Visualization: Scatter plot
+# st.subheader("Scatter Plot of Pipe Diameter vs. Water Loss Percentage")
+# plt.figure(figsize=(10, 6))
+# sns.scatterplot(data=data, x="Pipe Diameter_inches", y="Water_Loss_Percentage")
+# plt.xlabel("Pipe Diameter (inches)")
+# plt.ylabel("Water Loss Percentage")
+# st.pyplot(plt)
 
 # Prediction
 if st.button("Predict"):
