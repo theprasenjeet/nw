@@ -23,11 +23,10 @@ st.title("Visualization of Relationships")
 columns_to_visualize = st.multiselect("Select columns to visualize:", data.columns)
 
 if len(columns_to_visualize) >= 2:
-    # Create pair plots for selected columns with custom figsize
-    plt.figure(figsize=(20, 8))
-    
-    pair_plot.set_axis_labels(fontsize=6)
+    # Create pair plots for selected columns with custom figsize and font size
+    plt.figure(figsize=(20, 8))  # Specify your desired figsize
     pair_plot = sns.pairplot(data=data, vars=columns_to_visualize)
+    pair_plot.set_axis_labels(fontsize=6)  # Set the font size for axis labels
     st.pyplot(pair_plot)
 else:
     st.warning("Please select at least two columns for visualization.")
