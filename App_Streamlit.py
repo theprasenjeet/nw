@@ -24,7 +24,7 @@ columns_to_visualize = st.multiselect("Select columns to visualize:", data.colum
 
 if len(columns_to_visualize) >= 2:
     # Create pair plots for selected columns with custom figsize
-    plt.figure(figsize=(10, 8))  
+    plt.figure(figsize=(20, 8))  
     pair_plot = sns.pairplot(data=data, vars=columns_to_visualize)
     st.pyplot(pair_plot)
 else:
