@@ -41,7 +41,6 @@ st.write("Abbreviations:")
 st.write(mapping_data)
 
 
-# User input for selecting columns to visualize
 columns_to_visualize = st.multiselect("Select columns to visualize:", data.columns)
 
 if len(columns_to_visualize) >= 2:
@@ -70,8 +69,8 @@ def predict_water_loss(pipe_diameter, distance_miles):
 st.title("NRW Prediction App")
 
 # User input
-pipe_diameter = st.slider("Pipe Diameter (inches)", min_value=1, max_value=12, value=10)
-distance_miles = st.slider("Distance (miles)", min_value=1, max_value=6, value=5)
+pipe_diameter = st.slider("Pipe Diameter (inches)", min_value=1, max_value=12, value=6)
+distance_miles = st.slider("Distance (miles)", min_value=1, max_value=6, value=3)
 
 # Prediction
 if st.button("Predict"):
