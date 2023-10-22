@@ -65,7 +65,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 model = RandomForestRegressor(n_estimators=100, random_state=42)
 # Train the model on the training data
 model.fit(X_train, y_train)
-
+# Calculate the R-squared (accuracy) for the model
+accuracy = model.score(X_test, y_test)
 
 # Function to make predictions
 def predict_water_loss(pipe_diameter, distance_miles):
@@ -80,8 +81,8 @@ st.title("NRW Prediction App")
 
 
 # User input
-pipe_diameter = st.slider("Pipe Diameter (inches)", min_value=1, max_value=20, value=10)
-distance_miles = st.slider("Distance (miles)", min_value=1, max_value=10, value=5)
+pipe_diameter = st.slider("Pipe Diameter (inches)", min_value=1, max_value=12, value=10)
+distance_miles = st.slider("Distance (miles)", min_value=1, max_value=6, value=5)
 
 # # Visualization: Scatter plot
 # st.subheader("Scatter Plot of Pipe Diameter vs. Water Loss Percentage")
