@@ -8,19 +8,6 @@ import seaborn as sns
 
 data = pd.read_csv("Water.csv")  # Replace with your dataset path
 
-# Create a mapping of full-form to short-form
-water_quality_mapping = {'Excellent': 'E', 'Fair': 'F', 'Poor': 'P', 'Good': 'G'}
-raw_water_mapping = {'Reservoir': 'R', 'Spring': 'S', 'River': 'R', 'Well': 'W', 'Lake': 'L'}
-
-# Create a mapping of full-form to short-form
-water_quality_mapping = {'Excellent': 'E', 'Fair': 'F', 'Poor': 'P', 'Good': 'G'}
-raw_water_mapping = {'Reservoir': 'R', 'Spring': 'S', 'River': 'R', 'Well': 'W', 'Lake': 'L'}
-
-# Create a DataFrame to show the mapping
-mapping_data = pd.DataFrame({
-    'Full-Form': list(water_quality_mapping.keys()) + list(raw_water_mapping.keys()),
-    'Short-Form': list(water_quality_mapping.values()) + list(raw_water_mapping.values())
-})
 
 
 # Display the table with headings
@@ -44,6 +31,19 @@ data['Source_of_Raw_Water'] = data['Source_of_Raw_Water'].replace({'reservoir': 
 data['Source_of_Raw_Water'] = data['Source_of_Raw_Water'].str.upper()
 
 st.title("Visualization of Relationships")
+# Create a mapping of full-form to short-form
+water_quality_mapping = {'Excellent': 'E', 'Fair': 'F', 'Poor': 'P', 'Good': 'G'}
+raw_water_mapping = {'Reservoir': 'R', 'Spring': 'S', 'River': 'R', 'Well': 'W', 'Lake': 'L'}
+
+# Create a mapping of full-form to short-form
+water_quality_mapping = {'Excellent': 'E', 'Fair': 'F', 'Poor': 'P', 'Good': 'G'}
+raw_water_mapping = {'Reservoir': 'R', 'Spring': 'S', 'River': 'R', 'Well': 'W', 'Lake': 'L'}
+
+# Create a DataFrame to show the mapping
+mapping_data = pd.DataFrame({
+    'Full-Form': list(water_quality_mapping.keys()) + list(raw_water_mapping.keys()),
+    'Short-Form': list(water_quality_mapping.values()) + list(raw_water_mapping.values())
+})
 
 
 # User input for selecting columns to visualize
