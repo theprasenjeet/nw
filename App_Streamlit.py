@@ -18,6 +18,15 @@ upper_bound = Q3 + 1.5 * IQR
 data_no_outliers = data[(data['Water_Loss_Percentage'] >= lower_bound) & (data['Water_Loss_Percentage'] <= upper_bound)]
 # Load your trained Random Forest model
 model = RandomForestRegressor(n_estimators=100, random_state=42)
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create a Random Forest regression model
+model = RandomForestRegressor(n_estimators=100, random_state=42)  # You can adjust the number of trees as needed
+
+# Train the model on the training data
+model.fit(X_train, y_train)  # This line fits the model
 # Function to make predictions
 def predict_water_loss(pipe_diameter, distance_miles):
     features = [[pipe_diameter, distance_miles]]
