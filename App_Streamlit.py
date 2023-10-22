@@ -12,12 +12,11 @@ data = pd.read_csv("Water.csv")  # Replace with your dataset path
 water_quality_mapping = {'Excellent': 'E', 'Fair': 'F', 'Poor': 'P', 'Good': 'G'}
 raw_water_mapping = {'Reservoir': 'R', 'Spring': 'S', 'River': 'R', 'Well': 'W', 'Lake': 'L'}
 
-# Replace values in the original DataFrame
-data['Water_Quality_Short'] = data['Water_Quality'].replace(water_quality_mapping)
-data['Source_of_Raw_Water_Short'] = data['Source_of_Raw_Water'].replace(raw_water_mapping)
+# Create a new DataFrame with short-form values
+full_short_data = data.copy()  # Create a copy of the original data
+full_short_data['Water_Quality_Short'] = full_short_data['Water_Quality'].replace(water_quality_mapping)
+full_short_data['Source_of_Raw_Water_Short'] = full_short_data['Source_of_Raw_Water'].replace(raw_water_mapping)
 
-# Create a DataFrame to show full-form and short-form values
-full_short_data = data[['Water_Quality', 'Water_Quality_Short', 'Source_of_Raw_Water', 'Source_of_Raw_Water_Short']]
 
 # Display the table with headings
 st.write("Abbreviations:")
