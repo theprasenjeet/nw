@@ -12,15 +12,20 @@ data = pd.read_csv("Water.csv")  # Replace with your dataset path
 water_quality_mapping = {'Excellent': 'E', 'Fair': 'F', 'Poor': 'P', 'Good': 'G'}
 raw_water_mapping = {'Reservoir': 'R', 'Spring': 'S', 'River': 'R', 'Well': 'W', 'Lake': 'L'}
 
-# Create a new DataFrame with short-form values
-full_short_data = data.copy()  # Create a copy of the original data
-full_short_data['Water_Quality_Short'] = full_short_data['Water_Quality'].replace(water_quality_mapping)
-full_short_data['Source_of_Raw_Water_Short'] = full_short_data['Source_of_Raw_Water'].replace(raw_water_mapping)
+# Create a mapping of full-form to short-form
+water_quality_mapping = {'Excellent': 'E', 'Fair': 'F', 'Poor': 'P', 'Good': 'G'}
+raw_water_mapping = {'Reservoir': 'R', 'Spring': 'S', 'River': 'R', 'Well': 'W', 'Lake': 'L'}
+
+# Create a DataFrame to show the mapping
+mapping_data = pd.DataFrame({
+    'Full-Form': list(water_quality_mapping.keys()) + list(raw_water_mapping.keys()),
+    'Short-Form': list(water_quality_mapping.values()) + list(raw_water_mapping.values())
+})
 
 
 # Display the table with headings
 st.write("Abbreviations:")
-st.write(full_short_data)
+st.write(mapping_data)
 
 # Removing outliers using the IQR method
 Q1 = data['Water_Loss_Percentage'].quantile(0.25)
