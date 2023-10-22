@@ -71,3 +71,4 @@ st.pyplot(plt)
 if st.button("Predict"):
     prediction = predict_water_loss(pipe_diameter, distance_miles)
     st.success(f"Predicted NRW: {prediction:.2f} %")
+st.markdown("Team: Good Green Group")
