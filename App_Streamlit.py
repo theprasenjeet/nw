@@ -59,6 +59,7 @@ else:
 # Split the data into training and testing sets
 X = data[['Pipe Diameter_inches', 'Distance_miles']]
 y = data['Water_Loss_Percentage']
+y_log = np.log1p(y)  # Using log1p to avoid division by zero
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Create the Random Forest regression model
@@ -68,10 +69,12 @@ model.fit(X_train, y_train)
 # Calculate the R-squared (accuracy) for the model
 accuracy = model.score(X_test, y_test)
 
-# Function to make predictions
+# Function to make predictions and reverse the transformation
 def predict_water_loss(pipe_diameter, distance_miles):
     features = [[pipe_diameter, distance_miles]]
-    prediction = model.predict(features)
+    prediction_log = model.predict(features)
+    # Reverse the log transformation
+    prediction = np.expm1(prediction_log)
     return prediction[0]
 
 
@@ -84,13 +87,7 @@ st.title("NRW Prediction App")
 pipe_diameter = st.slider("Pipe Diameter (inches)", min_value=1, max_value=12, value=10)
 distance_miles = st.slider("Distance (miles)", min_value=1, max_value=6, value=5)
 
-# # Visualization: Scatter plot
-# st.subheader("Scatter Plot of Pipe Diameter vs. Water Loss Percentage")
-# plt.figure(figsize=(10, 6))
-# sns.scatterplot(data=data, x="Pipe Diameter_inches", y="Water_Loss_Percentage")
-# plt.xlabel("Pipe Diameter (inches)")
-# plt.ylabel("Water Loss Percentage")
-# st.pyplot(plt)
+
 
 # Prediction
 if st.button("Predict"):
