@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split  
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 
 data = pd.read_csv("Water.csv")  # Replace with your dataset path
 
