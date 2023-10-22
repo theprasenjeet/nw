@@ -8,12 +8,6 @@ import seaborn as sns
 
 data = pd.read_csv("Water.csv")  # Replace with your dataset path
 
-
-
-# Display the table with headings
-st.write("Abbreviations:")
-st.write(mapping_data)
-
 # Removing outliers using the IQR method
 Q1 = data['Water_Loss_Percentage'].quantile(0.25)
 Q3 = data['Water_Loss_Percentage'].quantile(0.75)
@@ -44,6 +38,9 @@ mapping_data = pd.DataFrame({
     'Full-Form': list(water_quality_mapping.keys()) + list(raw_water_mapping.keys()),
     'Short-Form': list(water_quality_mapping.values()) + list(raw_water_mapping.values())
 })
+# Display the table with headings
+st.write("Abbreviations:")
+st.write(mapping_data)
 
 
 # User input for selecting columns to visualize
@@ -98,6 +95,7 @@ distance_miles = st.slider("Distance (miles)", min_value=1, max_value=10, value=
 if st.button("Predict"):
     prediction = predict_water_loss(pipe_diameter, distance_miles)
     st.success(f"Predicted NRW: {prediction:.2f} %")
+    st.info(f"Model Accuracy (R-squared): {accuracy:.2f}")
 
 
 st.markdown("<p style='text-align: center;'>Team: Good Green Group</p>", unsafe_allow_html=True)
