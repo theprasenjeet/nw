@@ -1,6 +1,7 @@
 # Import necessary libraries
 import streamlit as st
 import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split  # Add this line to import train_test_split
 import matplotlib.pyplot as plt
 import seaborn as sns
