@@ -70,12 +70,10 @@ model.fit(X_train, y_train)
 # Calculate the R-squared (accuracy) for the model
 accuracy = model.score(X_test, y_test)
 
-# Function to make predictions and reverse the transformation
+# Function to make predictions
 def predict_water_loss(pipe_diameter, distance_miles):
     features = [[pipe_diameter, distance_miles]]
-    prediction_log = model.predict(features)
-    # Reverse the log transformation
-    prediction = np.expm1(prediction_log)
+    prediction = model.predict(features)
     return prediction[0]
 
 
