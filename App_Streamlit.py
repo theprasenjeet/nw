@@ -1,6 +1,7 @@
 # Import necessary libraries
 import streamlit as st
 import pandas as pd
+from sklearn.model_selection import train_test_split  # Add this line to import train_test_split
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -14,8 +15,7 @@ IQR = Q3 - Q1
 lower_bound = Q1 - 1.5 * IQR
 upper_bound = Q3 + 1.5 * IQR
 
-data= data[(data['Water_Loss_Percentage'] >= lower_bound) & (data['Water_Loss_Percentage'] <= upper_bound)]
-
+data = data[(data['Water_Loss_Percentage'] >= lower_bound) & (data['Water_Loss_Percentage'] <= upper_bound)]
 
 # Split the data into training and testing sets
 X = data[['Pipe Diameter_inches', 'Distance_miles']]
