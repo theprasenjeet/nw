@@ -27,7 +27,9 @@ if len(columns_to_visualize) >= 2:
     pair_plot = sns.pairplot(data=data, vars=columns_to_visualize)
     
     # Set the font size for axis labels
-    pair_plot.map(sns.set_axis_labels, fontsize=6)
+    for ax in pair_plot.axes.flat:
+        ax.xaxis.label.set_fontsize(6)
+        ax.yaxis.label.set_fontsize(6)
     
     st.pyplot(pair_plot)
 else:
