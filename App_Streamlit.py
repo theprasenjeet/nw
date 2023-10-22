@@ -79,7 +79,7 @@ distance_miles = st.slider("Distance (miles)", min_value=1, max_value=10, value=
 if st.button("Predict"):
     prediction = predict_water_loss(pipe_diameter, distance_miles)
     st.success(f"Predicted NRW: {prediction:.2f} %")
-st.markdown("Team: Good Green Group")
+
 
 st.markdown("<p style='text-align: center;'>Team: Good Green Group</p>", unsafe_allow_html=True)
 
