@@ -79,4 +79,14 @@ if st.button("Predict"):
 
 
 st.markdown("<p style='text-align: center;'>Team: Good Green Group</p>", unsafe_allow_html=True)
+# Use CSS to hide the Streamlit footer
+st.markdown(
+    """
+    <style>
+    .reportview-container .main footer {
+        visibility: hidden;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,)
 
