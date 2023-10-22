@@ -8,6 +8,21 @@ import seaborn as sns
 
 data = pd.read_csv("Water.csv")  # Replace with your dataset path
 
+# Create a mapping of full-form to short-form
+water_quality_mapping = {'Excellent': 'E', 'Fair': 'F', 'Poor': 'P', 'Good': 'G'}
+raw_water_mapping = {'Reservoir': 'R', 'Spring': 'S', 'River': 'R', 'Well': 'W', 'Lake': 'L'}
+
+# Replace values in the original DataFrame
+data['Water_Quality_Short'] = data['Water_Quality'].replace(water_quality_mapping)
+data['Source_of_Raw_Water_Short'] = data['Source_of_Raw_Water'].replace(raw_water_mapping)
+
+# Create a DataFrame to show full-form and short-form values
+full_short_data = data[['Water_Quality', 'Water_Quality_Short', 'Source_of_Raw_Water', 'Source_of_Raw_Water_Short']]
+
+# Display the table with headings
+st.write("Abbreviations:")
+st.write(full_short_data)
+
 # Removing outliers using the IQR method
 Q1 = data['Water_Loss_Percentage'].quantile(0.25)
 Q3 = data['Water_Loss_Percentage'].quantile(0.75)
