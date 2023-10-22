@@ -39,6 +39,19 @@ def predict_water_loss(pipe_diameter, distance_miles):
 # Create a Streamlit app
 st.title("NRW Prediction App")
 
+# Create a Streamlit app
+st.title("Visualization of Relationships")
+
+# User input for selecting columns to visualize
+columns_to_visualize = st.multiselect("Select columns to visualize:", data.columns)
+
+if len(columns_to_visualize) >= 2:
+    # Create pair plots for selected columns
+    pair_plot = sns.pairplot(data=data, vars=columns_to_visualize)
+    st.pyplot(pair_plot)
+else:
+    st.warning("Please select at least two columns for visualization.")
+
 # User input
 pipe_diameter = st.slider("Pipe Diameter (inches)", min_value=1, max_value=20, value=10)
 distance_miles = st.slider("Distance (miles)", min_value=1, max_value=10, value=5)
