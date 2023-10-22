@@ -45,7 +45,7 @@ columns_to_visualize = st.multiselect("Select columns to visualize:", data.colum
 
 if len(columns_to_visualize) >= 2:
     plt.figure(figsize=(10, 8))  
-    pair_plot = sns.pairplot(data=data, vars=columns_to_visualize[:2])
+    pair_plot = sns.pairplot(data=data, vars=columns_to_visualize[:1])
     st.pyplot(pair_plot)
 else:
     st.warning("Please select at least two columns for visualization.")
