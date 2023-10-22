@@ -16,7 +16,7 @@ lower_bound = Q1 - 1.5 * IQR
 upper_bound = Q3 + 1.5 * IQR
 data = data[(data['Water_Loss_Percentage'] >= lower_bound) & (data['Water_Loss_Percentage'] <= upper_bound)]
 
-
+data['Water_Quality'] = data['Water_Quality'].replace({'Excellent': 'E', 'Fair': 'F', 'Poor': 'P'})
 st.title("Visualization of Relationships")
 
 # User input for selecting columns to visualize
