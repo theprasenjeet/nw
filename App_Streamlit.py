@@ -17,7 +17,12 @@ upper_bound = Q3 + 1.5 * IQR
 data = data[(data['Water_Loss_Percentage'] >= lower_bound) & (data['Water_Loss_Percentage'] <= upper_bound)]
 
 data['Water_Quality'] = data['Water_Quality'].replace({'Excellent': 'E', 'Fair': 'F', 'Poor': 'P', 'Good': 'G'})
-data['Source_of_Raw_Water'] = data['Source_of_Raw_Water'].replace({'Reservoir': 'R', 'Spring': 'S', 'River': 'R', 'Well': 'W', 'Lake': 'L'})
+# Convert the column values to lowercase before replacing
+data['Source_of_Raw_Water'] = data['Source_of_Raw_Water'].str.lower()
+data['Source_of_Raw_Water'] = data['Source_of_Raw_Water'].replace({'reservoir': 'R', 'spring': 'S', 'river': 'R', 'well': 'W', 'lake': 'L'})
+
+# Optionally, you can convert them back to uppercase
+data['Source_of_Raw_Water'] = data['Source_of_Raw_Water'].str.upper()
 
 st.title("Visualization of Relationships")
 
