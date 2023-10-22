@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load your dataset (replace with your dataset path)
-data = pd.read_csv("water.csv")  # Replace with your dataset path
+data = pd.read_csv("Water.csv")  # Replace with your dataset path
 
 # Load your trained Random Forest model
 model = RandomForestRegressor(n_estimators=100, random_state=42)  # Load the same model as used for training
