@@ -59,6 +59,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
+# Evaluate the model on the test set
+y_pred = model.predict(X_test)
+
+# Calculate Mean Absolute Error (MAE)
+mae = np.mean(np.abs(y_test - y_pred))
 
 # Function to make predictions
 def predict_water_loss(pipe_diameter, distance_miles):
@@ -76,6 +81,7 @@ distance_miles = st.slider("Distance (miles)", min_value=1, max_value=6, value=3
 if st.button("Predict"):
     prediction = predict_water_loss(pipe_diameter, distance_miles)
     st.success(f"Predicted NRW: {prediction:.2f} %")
+    st.success(f"Mean Absolute Error on Test Data: {mae:.2f}")
 
 
 st.markdown("<p style='text-align: center;'>Team: Good Green Group</p>", unsafe_allow_html=True)
